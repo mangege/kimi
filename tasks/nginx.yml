@@ -1,0 +1,11 @@
+- name: install python-software-properties
+  apt: pkg=python-software-properties
+
+- name: add nginx key
+  apt_key: url=http://nginx.org/keys/nginx_signing.key
+
+- name: add nginx source
+  apt_repository: repo='deb http://nginx.org/packages/ubuntu/ precise nginx'
+
+- name: install nginx
+  apt: pkg=nginx

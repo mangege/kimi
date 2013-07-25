@@ -1,7 +1,9 @@
 ---
 - hosts: all
-  vars_prompt:
-    mysql_root_password: mysql new root pass
+  vars:
+    mysql_root_password: pass
   user: mimmy
+  sudo: yes
   tasks:
-    - include: tasks/mysql.yml
+#    - include: tasks/mysql.yml
+    - include: tasks/nginx.yml
