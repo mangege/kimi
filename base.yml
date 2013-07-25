@@ -9,28 +9,43 @@
   user: root
   tasks:
     - name: set hostname
-      action: shell echo "{{host_name}}" > /etc/hostname && hostname -F /etc/hostname
+      shell: echo "{{host_name}}" > /etc/hostname && hostname -F /etc/hostname
+
     - name: set hosts
       template: src=templates/hosts.j2 dest=/etc/hosts
+
     - name: set timezone #http://serverfault.com/questions/84521/automate-dpkg-reconfigure-tzdata/84528#84528
-      action: shell echo "Asia/Shanghai" > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata
+      shell: echo "Asia/Shanghai" > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata
+
+    - name: update sources.list
+      copy: src=files/sources.list dest=/etc/apt/sources.list backup=yes
+
     - name: update system
       apt: update_cache=yes upgrade=yes
+
     - name: create deploy user
       user: name={{deploy_user}} groups=sudo shell=/bin/bash
+
     - name: add authorized key
       authorized_key: user={{deploy_user}} key="{{ lookup('file', pub_key) }}"
+
     - name: modify sshd_config, disabling ssh password authentication
       lineinfile: dest=/etc/ssh/sshd_config regexp="^#PasswordAuthentication" line="PasswordAuthentication no" backup=yes
+
     - name: modify sshd_config, disabling ssh root login
       lineinfile: dest=/etc/ssh/sshd_config regexp="^PermitRootLogin yes" line="PermitRootLogin no"
+
     - name: restart ssh service
       service: name=ssh state=restarted
+
     - name: creating a firewall, copy iptables.firewall.rules
       copy: src=files/iptables.firewall.rules dest=/etc/iptables.firewall.rules
+
     - name: creating a firewall, copy firewall
       copy: src=files/firewall dest=/etc/network/if-pre-up.d/firewall mode=755
+
     - name: install fail2ban
       apt: pkg=fail2ban
+
     - name: reboot
-      action: shell reboot
+      shell: reboot
