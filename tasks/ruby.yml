@@ -1,0 +1,59 @@
+- name: install ruby build essential
+  apt: pkg={{ item }}
+  with_items: #https://github.com/wayneeseguin/rvm/blob/master/scripts/functions/requirements/ubuntu
+    - g++
+    - gcc
+    - make
+    - libc6-dev
+    - patch
+    - openssl
+    - ca-certificates
+    - libreadline6
+    - libreadline6-dev
+    - curl
+    - zlib1g
+    - zlib1g-dev
+    - libssl-dev
+    - libyaml-dev
+    - libsqlite3-dev
+    - sqlite3
+    - libxml2-dev
+    - libxslt1-dev
+    - autoconf
+    - libc6-dev
+    - libgdbm-dev
+    - libncurses5-dev
+    - automake
+    - libtool
+    - bison
+    - pkg-config
+    - libffi-dev
+
+- name: download ruby 2.0.0-p247
+  get_url: url=http://ruby.taobao.org/mirrors/ruby/2.0/ruby-2.0.0-p247.tar.bz2 dest=/tmp/ruby.tar.bz2
+  sudo: no
+
+- name: create /tmp/ruby dir
+  file: path=/tmp/ruby state=directory
+  sudo: no
+
+- name: untar ruby.tar.bz2
+  command: tar xf /tmp/ruby.tar.bz2 chdir=/tmp/ruby
+  sudo: no
+
+- name: configure ruby
+  command: ./configure chdir=/tmp/ruby/ruby-2.0.0-p247
+  sudo: no
+
+- name: make ruby
+  command: make chdir=/tmp/ruby/ruby-2.0.0-p247
+  sudo: no
+
+- name: install ruby
+  command: make install chdir=/tmp/ruby/ruby-2.0.0-p247
+
+- name: copy gemrc
+  copy: src=files/gemrc dest=/usr/local/etc/gemrc
+
+- name: add gem user dir to path
+  copy: src=files/gem_user_path.sh dest=/etc/profile.d/gem_user_path.sh owner=root group=root mode=0644

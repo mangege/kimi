@@ -1,0 +1,6 @@
+# Read about the gemrc format at http://docs.rubygems.org/read/chapter/11
+# --user-install is used to install to $HOME/.gem/ by default since we want to separate
+---
+:sources:
+- http://rubygems.org/
+gem: --user-install --no-rdoc --no-ri

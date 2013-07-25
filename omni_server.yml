@@ -6,4 +6,5 @@
   sudo: yes
   tasks:
 #    - include: tasks/mysql.yml
-    - include: tasks/nginx.yml
+#    - include: tasks/nginx.yml
+    - include: tasks/ruby.yml
