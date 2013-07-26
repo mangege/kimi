@@ -1,0 +1,8 @@
+- name: install puma service
+  copy: src=files/puma dest=/etc/init.d/puma owner=root group=root mode=755
+
+- name: install puma exec file
+  copy: src=files/run-puma dest=/usr/local/bin/run-puma owner=root group=root mode=755
+
+- name: create puma config file
+  copy: content="" dest=/etc/puma.conf owner=root group=root mode=0644

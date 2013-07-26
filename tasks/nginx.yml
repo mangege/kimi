@@ -9,3 +9,15 @@
 
 - name: install nginx
   apt: pkg=nginx
+
+- name: disable default access log
+  lineinfile: dest=/etc/nginx/nginx.conf regexp="^\s+access_log" state=absent backup=yes
+
+- name: hidden nginx version
+  lineinfile: dest=/etc/nginx/nginx.conf regexp="^\s+server_tokens" backup=yes insertafter="^\s+keepalive_timeout" line="    server_tokens off;"
+
+- name: remove default.conf
+  file: path=/etc/nginx/conf.d/default.conf state=absent
+
+- name: remove example_ssl.conf
+  file: path=/etc/nginx/conf.d/example_ssl.conf state=absent

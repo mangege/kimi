@@ -1,21 +1,21 @@
 ---
 - hosts: all
+  user: root
   vars:
     host_name: kitty
     full_host_name: kitty.mangege.com
     host_ip: 10.0.2.15
     deploy_user: mimmy
     pub_key: /home/outman/.ssh/outman_id_rsa.pub
-  user: root
   tasks:
     - name: set hostname
-      shell: echo "{{host_name}}" > /etc/hostname && hostname -F /etc/hostname
+      command: echo "{{host_name}}" > /etc/hostname && hostname -F /etc/hostname
 
     - name: set hosts
       template: src=templates/hosts.j2 dest=/etc/hosts
 
     - name: set timezone #http://serverfault.com/questions/84521/automate-dpkg-reconfigure-tzdata/84528#84528
-      shell: echo "Asia/Shanghai" > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata
+      command: echo "Asia/Shanghai" > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata
 
     - name: update sources.list
       copy: src=files/sources.list dest=/etc/apt/sources.list backup=yes
@@ -48,4 +48,4 @@
       apt: pkg=fail2ban
 
     - name: reboot
-      shell: reboot
+      command: reboot
