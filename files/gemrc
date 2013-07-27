@@ -3,4 +3,4 @@
 ---
 :sources:
 - http://rubygems.org/
-gem: --user-install --no-rdoc --no-ri
+gem: --no-rdoc --no-ri

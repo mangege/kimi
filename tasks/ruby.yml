@@ -55,5 +55,5 @@
 - name: copy gemrc
   copy: src=files/gemrc dest=/usr/local/etc/gemrc
 
-- name: add gem user dir to path
-  copy: src=files/gem_user_path.sh dest=/etc/profile.d/gem_user_path.sh owner=root group=root mode=0644
+- name: install bundler
+  gem: name=bundler
