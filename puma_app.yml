@@ -11,7 +11,7 @@
     db_pwd: pass
   tasks:
     - name: create app user
-      user: name={{app_name}} shell=/bin/bash
+      user: name={{app_name}} shell=/bin/bash groups=sudo
 
     - name: add authorized key
       authorized_key: user={{app_name}} key="{{ lookup('file', pub_key) }}"

@@ -6,3 +6,6 @@
 
 - name: create puma config file
   copy: content="" dest=/etc/puma.conf owner=root group=root mode=0644
+
+- name: auto start puma service
+  service: name=puma enabled=yes
