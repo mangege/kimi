@@ -56,4 +56,4 @@
   copy: src=files/gemrc dest=/usr/local/etc/gemrc
 
 - name: install bundler
-  gem: name=bundler
+  command: gem install bundler

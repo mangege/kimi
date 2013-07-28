@@ -1,9 +1,8 @@
 ---
 - hosts: all
-  user: mimmy
   sudo: yes
-  vars:
-    mysql_root_password: pass
+  vars_files:
+    - vars/omni_server.yml
   tasks:
     - include: tasks/mysql.yml
     - include: tasks/nginx.yml

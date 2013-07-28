@@ -1,0 +1,6 @@
+app_name: george
+app_domain: george.com
+pub_key: /home/outman/.ssh/outman_id_rsa.pub
+deploy_private_key: /home/outman/.ssh/aliyun_deploy
+db_root_pwd: pass
+db_pwd: pass

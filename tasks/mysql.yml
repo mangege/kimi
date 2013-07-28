@@ -5,5 +5,5 @@
       - python-mysqldb
 
 - name: change mysql root password
-  mysql_user: name=root password={{mysql_root_password}}
+  mysql_user: name=root password={{mysql_root_pwd}}
   sudo: no

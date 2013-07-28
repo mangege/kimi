@@ -1,14 +1,8 @@
 ---
 - hosts: all
-  user: mimmy
   sudo: yes
-  vars:
-    app_name: verymirror
-    app_domain: 0x6f.com
-    pub_key: /home/outman/.ssh/outman_id_rsa.pub
-    deploy_private_key: /home/outman/.ssh/aliyun_deploy
-    db_root_pwd: pass
-    db_pwd: pass
+  vars_files:
+    - vars/puma_app.yml
   tasks:
     - name: create app user
       user: name={{app_name}} shell=/bin/bash groups=sudo
