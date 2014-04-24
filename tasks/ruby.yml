@@ -29,28 +29,28 @@
     - pkg-config
     - libffi-dev
 
-- name: download ruby 2.0.0-p247
-  get_url: url=http://ruby.taobao.org/mirrors/ruby/2.0/ruby-2.0.0-p247.tar.bz2 dest=/tmp/ruby.tar.bz2
+- name: download ruby 2.1.1
+  get_url: url=http://ruby.taobao.org/mirrors/ruby/2.1/ruby-2.1.1.tar.gz dest=/tmp/ruby.tar.gz
   sudo: no
 
 - name: create /tmp/ruby dir
   file: path=/tmp/ruby state=directory
   sudo: no
 
-- name: untar ruby.tar.bz2
-  command: tar xf /tmp/ruby.tar.bz2 chdir=/tmp/ruby
+- name: untar ruby.tar.gz
+  command: tar xf /tmp/ruby.tar.gz chdir=/tmp/ruby
   sudo: no
 
 - name: configure ruby
-  command: ./configure chdir=/tmp/ruby/ruby-2.0.0-p247
+  command: ./configure chdir=/tmp/ruby/ruby*
   sudo: no
 
 - name: make ruby
-  command: make chdir=/tmp/ruby/ruby-2.0.0-p247
+  command: make chdir=/tmp/ruby/ruby*
   sudo: no
 
 - name: install ruby
-  command: make install chdir=/tmp/ruby/ruby-2.0.0-p247
+  command: make install chdir=/tmp/ruby/ruby*
 
 - name: copy gemrc
   copy: src=files/gemrc dest=/usr/local/etc/gemrc

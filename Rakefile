@@ -1,5 +1,5 @@
 #coding: utf-8
-VARS_FILES = %w[base omni_server puma_app]
+VARS_FILES = %w[base omni_server webapp]
 
 task default: :hi
 
@@ -24,7 +24,7 @@ task omni_server: :check_omni_server_vars do
   sh 'ansible-playbook -i ansible_hosts -K omni_server.yml'
 end
 
-desc '添加puma应用'
-task puma_app: :check_puma_app_vars do
-  sh 'ansible-playbook -i ansible_hosts -K puma_app.yml'
+desc '添加webapp应用'
+task webapp: :check_webapp_vars do
+  sh 'ansible-playbook -i ansible_hosts -K webapp.yml'
 end
