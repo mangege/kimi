@@ -14,7 +14,7 @@
       copy: src={{ deploy_private_key }} dest=/home/{{ app_name }}/.ssh/id_rsa group={{ app_name }} owner={{ app_name }} mode=0400
 
     - name: create db
-      mysql_db: name="{{ app_name }}_production" login_user=root login_password={{ db_root_pwd }}
+      mysql_db: name="{{ app_name }}_production" login_user=root login_password={{ db_root_pwd }} encoding=utf8
 
     - name: create db user
       mysql_user: name={{ app_name }} password={{ db_pwd }} priv="{{ app_name }}_production.*:ALL" state=present login_user=root login_password={{ db_root_pwd }}
