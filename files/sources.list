@@ -1,7 +1,14 @@
 ###### By http://repogen.simplylinux.ch/
+#############################################################
+################### OFFICIAL UBUNTU REPOS ###################
+#############################################################
+
 ###### Ubuntu Main Repos
 deb http://cn.archive.ubuntu.com/ubuntu/ precise main restricted universe multiverse 
+deb-src http://cn.archive.ubuntu.com/ubuntu/ precise main restricted universe multiverse 
 
 ###### Ubuntu Update Repos
 deb http://cn.archive.ubuntu.com/ubuntu/ precise-security main restricted universe multiverse 
 deb http://cn.archive.ubuntu.com/ubuntu/ precise-updates main restricted universe multiverse 
+deb-src http://cn.archive.ubuntu.com/ubuntu/ precise-security main restricted universe multiverse 
+deb-src http://cn.archive.ubuntu.com/ubuntu/ precise-updates main restricted universe multiverse 
