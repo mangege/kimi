@@ -42,15 +42,15 @@
   sudo: no
 
 - name: configure ruby
-  command: ./configure chdir=/tmp/ruby/ruby*
+  command: ./configure chdir=/tmp/ruby/ruby-2.1.1
   sudo: no
 
 - name: make ruby
-  command: make chdir=/tmp/ruby/ruby*
+  command: make chdir=/tmp/ruby/ruby-2.1.1
   sudo: no
 
 - name: install ruby
-  command: make install chdir=/tmp/ruby/ruby*
+  command: make install chdir=/tmp/ruby/ruby-2.1.1
 
 - name: copy gemrc
   copy: src=files/gemrc dest=/usr/local/etc/gemrc
