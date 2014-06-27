@@ -1,12 +1,12 @@
 Kimi
 ====
-用Ansible来自动化配置你的Ubuntu 12.04服务器.
+用Ansible来自动化配置你的Ubuntu 14.04服务器.
 
 目前只完成Linode Library的[Getting Started](https://library.linode.com/getting-started) 和 [Securing Your Server](https://library.linode.com/securing-your-server) , 后续会添加nginx+mysql+puma的自动化配置.
 
 环境要求
 ===
-Ubuntu 12.04
+Ubuntu 14.04
 
 
 注意

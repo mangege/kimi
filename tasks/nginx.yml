@@ -5,7 +5,7 @@
   apt_key: url=http://nginx.org/keys/nginx_signing.key
 
 - name: add nginx source
-  apt_repository: repo='deb http://nginx.org/packages/ubuntu/ precise nginx'
+  apt_repository: repo='deb http://nginx.org/packages/ubuntu/ trusty nginx'
 
 - name: install nginx
   apt: pkg=nginx
