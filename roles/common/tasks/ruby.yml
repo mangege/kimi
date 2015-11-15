@@ -17,10 +17,7 @@
     - libyaml-dev
     - libsqlite3-dev
     - sqlite3
-    - libxml2-dev
-    - libxslt1-dev
     - autoconf
-    - libc6-dev
     - libgdbm-dev
     - libncurses5-dev
     - automake
@@ -29,31 +26,34 @@
     - pkg-config
     - libffi-dev
 
-- name: download ruby 2.1.2
-  get_url: url=http://ruby.taobao.org/mirrors/ruby/2.1/ruby-2.1.2.tar.gz dest=/tmp/ruby.tar.gz
-  sudo: no
+- name: download ruby
+  get_url: url=https://ruby.taobao.org/mirrors/ruby/{{ ruby_ver }}/ruby-{{ ruby_full_ver }}.tar.gz dest=/tmp/ruby.tar.gz
+  become: no
 
 - name: create /tmp/ruby dir
   file: path=/tmp/ruby state=directory
-  sudo: no
+  become: no
 
 - name: untar ruby.tar.gz
   command: tar xf /tmp/ruby.tar.gz chdir=/tmp/ruby
-  sudo: no
+  become: no
 
 - name: configure ruby
-  command: ./configure chdir=/tmp/ruby/ruby-2.1.2
-  sudo: no
+  command: ./configure chdir=/tmp/ruby/ruby-{{ ruby_full_ver }} --prefix=/opt/ruby{{ ruby_ver_dir }}
+  become: no
 
 - name: make ruby
-  command: make chdir=/tmp/ruby/ruby-2.1.2
-  sudo: no
+  command: make chdir=/tmp/ruby/ruby-{{ ruby_full_ver }}
+  become: no
 
 - name: install ruby
-  command: make install chdir=/tmp/ruby/ruby-2.1.2
+  command: make install chdir=/tmp/ruby/ruby-{{ ruby_full_ver }}
+
+- name: create ruby etc dir
+  file: path=/opt/ruby{{ ruby_ver_dir }}/etc state=directory mode=0755
 
 - name: copy gemrc
-  copy: src=files/gemrc dest=/usr/local/etc/gemrc
+  copy: src=../files/gemrc dest=/opt/ruby{{ ruby_ver_dir }}/etc/gemrc
 
 - name: install bundler
-  command: gem install bundler
+  command: /opt/ruby{{ ruby_ver_dir}}/bin/gem install bundler

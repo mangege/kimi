@@ -1,5 +1,0 @@
-host_name: kitty
-full_host_name: kitty.mangege.com
-host_ip: 10.0.2.15
-deploy_user: mimmy
-pub_key: /home/outman/.ssh/outman_id_rsa.pub

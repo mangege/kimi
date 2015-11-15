@@ -1,5 +1,6 @@
-- name: install app
+- name: install app runtime
   apt: pkg={{ item }}
   with_items:
     - git
     - libmysqlclient-dev
+    - supervisor

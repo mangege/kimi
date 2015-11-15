@@ -1,0 +1,23 @@
+---
+- hosts: h-is.mangege.com
+  remote_user: outman
+  become: yes
+  become_method: sudo
+  vars:
+    app_name: peng
+    app_domain: peng.mangege.com
+    pub_key: /Users/Jesse/.ssh/outman_id_rsa.pub
+    deploy_private_key: /Users/Jesse/.ssh/deploy_rsa
+  vars_prompt:
+    - name: "db_root_pwd"
+      prompt: "Enter db root password"
+      private: yes
+    - name: "app_db_pwd"
+      prompt: "Enter app db password"
+      private: yes
+      confirm: yes
+  tasks:
+    - include: ../common/tasks/base_app.yml
+
+    - name: add conf to supervisor
+      copy: src=./files/supervisor_peng.conf dest=/etc/supervisor/conf.d

@@ -1,0 +1,18 @@
+---
+- hosts: h-is.mangege.com
+  remote_user: root
+  vars:
+    deploy_user: outman
+    pub_key: /Users/Jesse/.ssh/outman_id_rsa.pub
+    host_name: icestorm
+    full_host_name: icestorm.mangege.com
+    host_ip: 172.16.17.229
+  vars_prompt:
+    - name: "deploy_user_password"
+      prompt: "Enter deploy user password"
+      private: yes
+      encrypt: "sha512_crypt"
+      confirm: yes
+      salt_size: 7
+  tasks:
+    - include: ../common/tasks/base.yml
