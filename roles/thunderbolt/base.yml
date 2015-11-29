@@ -1,0 +1,18 @@
+---
+- hosts: h-th.mangege.com
+  remote_user: root
+  vars:
+    deploy_user: outman
+    pub_key: /Users/Jesse/.ssh/outman_id_rsa.pub
+    host_name: thunderbolt
+    full_host_name: thunderbolt.mangege.com
+    host_ip: 176.126.68.128
+  vars_prompt:
+    - name: "deploy_user_password"
+      prompt: "Enter deploy user password"
+      private: yes
+      encrypt: "sha512_crypt"
+      confirm: yes
+      salt_size: 7
+  tasks:
+    - include: ../common/tasks/base.yml

@@ -1,0 +1,19 @@
+---
+- hosts: h-is.mangege.com
+  remote_user: outman
+  become: yes
+  become_method: sudo
+  vars:
+    ruby_ver: 2.2
+    ruby_full_ver: 2.2.3
+    ruby_ver_dir: 22
+  vars_prompt:
+    - name: "mysql_root_password"
+      prompt: "Enter mysql root password"
+      private: yes
+      confirm: yes
+  tasks:
+    - include: ../common/tasks/mysql.yml
+    - include: ../common/tasks/nginx.yml
+    - include: ../common/tasks/ruby.yml
+    - include: ../common/tasks/app_runtime.yml

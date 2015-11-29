@@ -20,3 +20,5 @@ Ubuntu 14.04
     ansible-playbook -i hosts roles/icestorm/omni_server.yml --ask-become-pass
     ansible-playbook -i hosts roles/icestorm/ruby20.yml --ask-become-pass
     ansible-playbook -i hosts roles/icestorm/peng_app.yml --ask-become-pass
+
+    ansible-playbook -i hosts roles/thunderbolt/base.yml -u root -k

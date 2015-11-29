@@ -1,17 +1,14 @@
-#############################################################
-################### OFFICIAL UBUNTU REPOS ###################
-#############################################################
+#------------------------------------------------------------------------------#
+#                            OFFICIAL UBUNTU REPOS                             #
+#------------------------------------------------------------------------------#
+
 
 ###### Ubuntu Main Repos
-deb http://cn.archive.ubuntu.com/ubuntu/ trusty main restricted universe multiverse 
-deb-src http://cn.archive.ubuntu.com/ubuntu/ trusty main restricted universe multiverse 
+deb http://us.archive.ubuntu.com/ubuntu/ trusty main restricted universe 
+deb-src http://us.archive.ubuntu.com/ubuntu/ trusty main restricted universe 
 
 ###### Ubuntu Update Repos
-deb http://cn.archive.ubuntu.com/ubuntu/ trusty-security main restricted universe multiverse 
-deb http://cn.archive.ubuntu.com/ubuntu/ trusty-updates main restricted universe multiverse 
-deb http://cn.archive.ubuntu.com/ubuntu/ trusty-proposed main restricted universe multiverse 
-deb http://cn.archive.ubuntu.com/ubuntu/ trusty-backports main restricted universe multiverse 
-deb-src http://cn.archive.ubuntu.com/ubuntu/ trusty-security main restricted universe multiverse 
-deb-src http://cn.archive.ubuntu.com/ubuntu/ trusty-updates main restricted universe multiverse 
-deb-src http://cn.archive.ubuntu.com/ubuntu/ trusty-proposed main restricted universe multiverse 
-deb-src http://cn.archive.ubuntu.com/ubuntu/ trusty-backports main restricted universe multiverse 
+deb http://us.archive.ubuntu.com/ubuntu/ trusty-security main restricted universe 
+deb http://us.archive.ubuntu.com/ubuntu/ trusty-updates main restricted universe 
+deb-src http://us.archive.ubuntu.com/ubuntu/ trusty-security main restricted universe 
+deb-src http://us.archive.ubuntu.com/ubuntu/ trusty-updates main restricted universe 

@@ -1,0 +1,11 @@
+---
+- hosts: h-is.mangege.com
+  remote_user: outman
+  become: yes
+  become_method: sudo
+  vars:
+    ruby_ver: 2.2
+    ruby_full_ver: 2.2.3
+    ruby_ver_dir: 22
+  tasks:
+    - include: ../common/tasks/ruby.yml
